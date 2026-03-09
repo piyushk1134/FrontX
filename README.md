@@ -1,4 +1,4 @@
-# 📄 Frontpage Editor — Cover Page Studio
+# 📄 FrontX — Cover Page Studio
 
 A sleek, browser-based **A4 cover page editor** for creating professional academic project front pages. No installation required — just open the HTML file in your browser and start designing.
 
