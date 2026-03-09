@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontpage Editor — Professional Cover Page</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════ Sidebar ═══════════════ -->
+    <div class="editor-sidebar">
+
+        <div class="sidebar-brand">
+            <div class="sidebar-brand-icon">FP</div>
+            <div class="sidebar-brand-text">
+                Frontpage Editor
+                <span>Cover Page Studio</span>
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Quick Tip</div>
+            <div class="helper-tip">
+                Click any text on the preview to edit it directly. Use controls below to adjust sizing and spacing.
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Logo</div>
+            <div class="control-group">
+                <label>Upload Custom Logo</label>
+                <input type="file" id="logoUpload" accept="image/*">
+            </div>
+            <div class="control-group">
+                <label>Size <span class="value-display" id="logoSizeVal">120px</span></label>
+                <input type="range" id="logoSize" min="50" max="400" value="120">
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Typography</div>
+            <div class="control-group">
+                <label>Text Size <span class="value-display" id="textSizeVal">100%</span></label>
+                <input type="range" id="textSize" min="0.5" max="1.5" step="0.05" value="1">
+            </div>
+            <div class="control-group">
+                <label>Text Spacing <span class="value-display" id="textGapVal">100%</span></label>
+                <input type="range" id="textGap" min="0.2" max="2" step="0.05" value="1">
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Text Fields</div>
+            <button class="add-text-btn" id="addTextBtn">+ Add Text Field</button>
+        </div>
+
+        <div class="sidebar-footer">
+            <button class="print-btn" onclick="window.print()">🖨️ Save as PDF / Print</button>
+        </div>
+    </div>
+
+    <!-- ═══════════════ Workspace ═══════════════ -->
+    <div class="workspace">
+        <div class="page">
+            <!-- Decorative elements -->
+
+            <div class="page-frame"></div>
+            <div class="page-frame-inner"></div>
+            <div class="corner tl"></div>
+            <div class="corner tr"></div>
+            <div class="corner bl"></div>
+            <div class="corner br"></div>
+
+            <div class="page-content">
+
+                <!-- Header -->
+                <div class="page-header">
+                    <div class="logo-container">
+                        <!-- Inline SVG fallback for Amity-style logo -->
+                        <svg id="pageLogo" class="logo" viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+                            <defs>
+                                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#0B1D3A" />
+                                    <stop offset="100%" style="stop-color:#1A3054" />
+                                </linearGradient>
+                            </defs>
+                            <rect x="0" y="0" width="200" height="80" rx="8" fill="url(#logoGrad)" />
+                            <text x="100" y="38" text-anchor="middle" fill="#C9A84C"
+                                font-family="Montserrat, sans-serif" font-size="14" font-weight="800"
+                                letter-spacing="3">AMITY</text>
+                            <text x="100" y="56" text-anchor="middle" fill="white" font-family="Inter, sans-serif"
+                                font-size="8" font-weight="500" letter-spacing="2">UNIVERSITY</text>
+                            <line x1="60" y1="42" x2="140" y2="42" stroke="#C9A84C" stroke-width="0.5" opacity="0.5" />
+                        </svg>
+                    </div>
+                    <div class="uni-name" contenteditable="true" spellcheck="false" data-base-size="24"
+                        data-label="University Name">Amity University</div>
+                    <div class="uni-campus" contenteditable="true" spellcheck="false" data-base-size="8.5"
+                        data-label="Campus">Uttar Pradesh · Lucknow Campus</div>
+                    <hr class="header-rule">
+                </div>
+
+                <!-- Main Content -->
+                <div class="main-content">
+                    <div class="project-label" contenteditable="true" spellcheck="false" data-base-size="10"
+                        data-label="Project Label">Major Project On</div>
+                    <hr class="gold-accent-line">
+                    <div class="project-title" contenteditable="true" spellcheck="false" data-base-size="38"
+                        data-label="Project Title">Gesture Controlled<br>Video Game</div>
+                    <div class="project-subtitle" contenteditable="true" spellcheck="false" data-base-size="24"
+                        data-label="Subtitle">(GestureX)</div>
+
+                    <div class="section-divider">
+                        <div class="line"></div>
+                        <div class="diamond"></div>
+                        <div class="line"></div>
+                    </div>
+
+                    <div class="submitted-label" contenteditable="true" spellcheck="false" data-base-size="8.5"
+                        data-label="Submitted Label">Submitted To</div>
+                    <div class="institute" contenteditable="true" spellcheck="false" data-base-size="11"
+                        data-label="Institute">Amity Institute of<br>Information Technology</div>
+                </div>
+
+                <!-- Footer -->
+                <div class="page-footer">
+                    <div class="footer-col" style="text-align: left;">
+                        <div class="col-label" contenteditable="true" spellcheck="false" data-base-size="7"
+                            data-label="Guide Label">Guided By</div>
+                        <div class="col-name" contenteditable="true" spellcheck="false" data-base-size="15"
+                            data-label="Guide Name">Faculty name</div>
+                    </div>
+                    <div class="footer-col" style="text-align: right;">
+                        <div class="col-label" contenteditable="true" spellcheck="false" data-base-size="7"
+                            data-label="Student Label">Submitted By</div>
+                        <div class="col-name" contenteditable="true" spellcheck="false" data-base-size="15"
+                            data-label="Student Name">name</div>
+                        <div class="col-details" contenteditable="true" spellcheck="false" data-base-size="9"
+                            data-label="Student Details">
+                            <b>Enroll</b><br>
+                            BCA · Semester VI
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Text Toolbar -->
+    <div class="text-toolbar" id="textToolbar">
+        <div class="toolbar-label" id="toolbarLabel">Element</div>
+        <div class="toolbar-row">
+            <input type="range" id="toolbarSize" min="4" max="60" step="0.5" value="12">
+            <span class="toolbar-val" id="toolbarVal">12pt</span>
+        </div>
+        <button class="toolbar-delete" id="toolbarDelete">🗑 Remove</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
