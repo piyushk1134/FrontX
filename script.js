@@ -11,6 +11,8 @@ const toolbar = document.getElementById('textToolbar');
 const toolbarSize = document.getElementById('toolbarSize');
 const toolbarLabel = document.getElementById('toolbarLabel');
 const toolbarVal = document.getElementById('toolbarVal');
+const toolbarColor = document.getElementById('toolbarColor');
+const toolbarFont = document.getElementById('toolbarFont');
 const toolbarDel = document.getElementById('toolbarDelete');
 let activeElement = null;
 
@@ -27,6 +29,20 @@ function bindEditable(el) {
         toolbarLabel.textContent = label;
         toolbarSize.value = currentSize;
         toolbarVal.textContent = currentSize + 'pt';
+
+        // Read current color
+        const currentColor = getComputedStyle(el).color;
+        toolbarColor.value = rgbToHex(currentColor);
+
+        // Read current font family
+        const currentFont = getComputedStyle(el).fontFamily;
+        const options = toolbarFont.options;
+        for (let i = 0; i < options.length; i++) {
+            if (currentFont.includes(options[i].text)) {
+                toolbarFont.selectedIndex = i;
+                break;
+            }
+        }
 
         // Position toolbar above the element
         const rect = el.getBoundingClientRect();
@@ -54,6 +70,28 @@ toolbarSize.addEventListener('input', function (e) {
     activeElement.style.fontSize = val + 'pt';
     toolbarVal.textContent = val + 'pt';
 });
+
+// Change text color
+toolbarColor.addEventListener('input', function (e) {
+    if (!activeElement) return;
+    activeElement.style.color = e.target.value;
+});
+
+// Change font family
+toolbarFont.addEventListener('change', function (e) {
+    if (!activeElement) return;
+    activeElement.style.fontFamily = e.target.value;
+});
+
+// Helper: convert rgb(r, g, b) to #hex
+function rgbToHex(rgb) {
+    const match = rgb.match(/\d+/g);
+    if (!match || match.length < 3) return '#0B1D3A';
+    return '#' + match.slice(0, 3).map(n => {
+        const hex = parseInt(n).toString(16);
+        return hex.length === 1 ? '0' + hex : hex;
+    }).join('');
+}
 
 // Delete active element
 toolbarDel.addEventListener('click', function (e) {
@@ -187,3 +225,28 @@ textGap.addEventListener('input', function (e) {
     page.style.setProperty('--gap-scale', e.target.value);
     document.getElementById('textGapVal').textContent = Math.round(e.target.value * 100) + '%';
 });
+
+// Orientation Toggle (Portrait / Landscape)
+const portraitBtn = document.getElementById('portraitBtn');
+const landscapeBtn = document.getElementById('landscapeBtn');
+
+// Inject a dynamic @page style for print orientation
+const pageStyleEl = document.createElement('style');
+document.head.appendChild(pageStyleEl);
+
+function setOrientation(mode) {
+    if (mode === 'landscape') {
+        page.classList.add('landscape');
+        landscapeBtn.classList.add('active');
+        portraitBtn.classList.remove('active');
+        pageStyleEl.textContent = '@media print { @page { size: A4 landscape; margin: 0; } }';
+    } else {
+        page.classList.remove('landscape');
+        portraitBtn.classList.add('active');
+        landscapeBtn.classList.remove('active');
+        pageStyleEl.textContent = '@media print { @page { size: A4; margin: 0; } }';
+    }
+}
+
+portraitBtn.addEventListener('click', function () { setOrientation('portrait'); });
+landscapeBtn.addEventListener('click', function () { setOrientation('landscape'); });
