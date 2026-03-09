@@ -17,9 +17,9 @@
     <div class="editor-sidebar">
 
         <div class="sidebar-brand">
-            <div class="sidebar-brand-icon">FP</div>
+            <div class="sidebar-brand-icon">FPX</div>
             <div class="sidebar-brand-text">
-                FrontX 
+                FrontX
                 <span>Cover Page Studio</span>
             </div>
         </div>
@@ -28,6 +28,14 @@
             <div class="sidebar-section-title">Quick Tip</div>
             <div class="helper-tip">
                 Click any text on the preview to edit it directly. Use controls below to adjust sizing and spacing.
+            </div>
+        </div>
+
+        <div class="sidebar-section">
+            <div class="sidebar-section-title">Page Layout</div>
+            <div class="orientation-toggle">
+                <button class="orient-btn active" id="portraitBtn" data-mode="portrait">📄 Portrait</button>
+                <button class="orient-btn" id="landscapeBtn" data-mode="landscape">📄 Landscape</button>
             </div>
         </div>
 
@@ -160,12 +168,27 @@
             <input type="range" id="toolbarSize" min="4" max="60" step="0.5" value="12">
             <span class="toolbar-val" id="toolbarVal">12pt</span>
         </div>
+        <div class="toolbar-row">
+            <span class="toolbar-color-label">Color</span>
+            <input type="color" id="toolbarColor" value="#0B1D3A">
+        </div>
+        <div class="toolbar-row">
+            <span class="toolbar-color-label">Font</span>
+            <select id="toolbarFont" class="toolbar-font-select">
+                <option value="'Cormorant Garamond', serif">Cormorant Garamond</option>
+                <option value="'Montserrat', sans-serif">Montserrat</option>
+                <option value="'Inter', sans-serif">Inter</option>
+                <option value="'Georgia', serif">Georgia</option>
+                <option value="'Times New Roman', serif">Times New Roman</option>
+                <option value="'Arial', sans-serif">Arial</option>
+                <option value="'Verdana', sans-serif">Verdana</option>
+                <option value="'Courier New', monospace">Courier New</option>
+            </select>
+        </div>
         <button class="toolbar-delete" id="toolbarDelete">🗑 Remove</button>
     </div>
 
     <script src="script.js"></script>
 </body>
 
-
 </html>
-
