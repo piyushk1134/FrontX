@@ -648,6 +648,59 @@ input[type="range"]::-webkit-slider-thumb {
     background: #E74C3C;
 }
 
+.toolbar-color-label {
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.toolbar-row input[type="color"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 32px;
+    height: 26px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    background: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: auto;
+}
+
+.toolbar-row input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 2px;
+}
+
+.toolbar-row input[type="color"]::-webkit-color-swatch {
+    border: none;
+    border-radius: 3px;
+}
+
+.toolbar-font-select {
+    flex: 1;
+    margin-left: auto;
+    padding: 5px 8px;
+    font-size: 0.75rem;
+    font-family: 'Inter', sans-serif;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.toolbar-font-select:hover,
+.toolbar-font-select:focus {
+    border-color: var(--gold);
+}
+
+.toolbar-font-select option {
+    background: var(--navy);
+    color: white;
+}
+
 .add-text-btn {
     background: rgba(255, 255, 255, 0.08);
     color: rgba(255, 255, 255, 0.8);
@@ -714,6 +767,46 @@ input[type="range"]::-webkit-slider-thumb {
     opacity: 1;
 }
 
+/* ═══════════════════════ ORIENTATION TOGGLE ═══════════════════════ */
+.orientation-toggle {
+    display: flex;
+    gap: 8px;
+}
+
+.orient-btn {
+    flex: 1;
+    padding: 10px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.6);
+    cursor: pointer;
+    transition: all 0.25s;
+    letter-spacing: 0.3px;
+}
+
+.orient-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.85);
+    border-color: rgba(255, 255, 255, 0.25);
+}
+
+.orient-btn.active {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy);
+    border-color: var(--gold);
+    box-shadow: 0 2px 10px rgba(201, 168, 76, 0.3);
+}
+
+/* ═══════════════════════ LANDSCAPE MODE ═══════════════════════ */
+.page.landscape {
+    width: 297mm;
+    height: 210mm;
+}
+
 /* ═══════════════════════ PRINT ═══════════════════════ */
 @media print {
     * {
@@ -745,6 +838,11 @@ input[type="range"]::-webkit-slider-thumb {
         margin: 0;
         width: 210mm;
         height: 297mm;
+    }
+
+    .page.landscape {
+        width: 297mm;
+        height: 210mm;
     }
 
     [contenteditable="true"]:hover,
